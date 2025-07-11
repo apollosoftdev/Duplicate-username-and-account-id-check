@@ -8,9 +8,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Add Entity Framework Core
+// Add Entity Framework Core with In-Memory Database
 builder.Services.AddDbContext<UsernameValidationService.Data.ApplicationDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseInMemoryDatabase("UsernameValidationDb"));
 
 // Add Services
 builder.Services.AddScoped<UsernameValidationService.Services.IUsernameValidationService, UsernameValidationService.Services.UsernameValidationService>();
